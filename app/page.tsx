@@ -202,8 +202,6 @@ export default function FormPage() {
                     />
                   </div>
                 </div>
-
-                {/* lainnya */}
                 <div className="flex flex-col gap-1 mt-4">
                   <label>Alamat Lengkap</label>
                   <input
