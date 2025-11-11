@@ -75,7 +75,7 @@ export default function FormPage() {
   }
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col bg-white text-black">
       <div className="bg-gray-500 text-white p-6">
         <h1 className="text-2xl font-semibold">Formulir CV</h1>
         <p className="text-sm mt-1">

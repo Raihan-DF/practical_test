@@ -69,43 +69,54 @@ export default function PreviewPage() {
   if (!personalData) return <p>Loading preview...</p>;
 
   return (
-    <div className="p-10">
-      <h1 className="text-2xl font-bold mb-6">Preview CV</h1>
+    <div className="max-w-3xl mx-auto bg-white rounded-lg p-10 mt-10 border border-gray-200">
+      <h1 className="text-3xl font-bold mb-8 text-gray-900 text-center border-b pb-3">
+        Preview CV
+      </h1>
 
       {/* Informasi Pribadi */}
-      <section className="mb-6">
-        <h2 className="text-xl font-semibold mb-2">Informasi Pribadi</h2>
-        <p>
-          <strong>Nama:</strong> {personalData.nama}
-        </p>
-        <p>
-          <strong>Email:</strong> {personalData.email}
-        </p>
-        <p>
-          <strong>Telepon:</strong> {personalData.telepon}
-        </p>
-        <p>
-          <strong>Kota:</strong> {personalData.kota}
-        </p>
-        <p>
-          <strong>Kode Pos:</strong> {personalData.kodepos}
-        </p>
-        <p>
-          <strong>Alamat:</strong> {personalData.alamat}
-        </p>
-        <p>
-          <strong>Kewarganegaraan:</strong> {personalData.kewarganegaraan}
-        </p>
-        <p>
-          <strong>Ringkasan:</strong> {personalData.ringkasan}
-        </p>
+      <section className="mb-8">
+        <h2 className="text-xl font-semibold text-gray-800 mb-3 pl-3">
+          Informasi Pribadi
+        </h2>
+        <div className="grid grid-cols-2 gap-y-2 text-gray-700">
+          <p>
+            <strong>Nama:</strong> {personalData.nama}
+          </p>
+          <p>
+            <strong>Email:</strong> {personalData.email}
+          </p>
+          <p>
+            <strong>Telepon:</strong> {personalData.telepon}
+          </p>
+          <p>
+            <strong>Kota:</strong> {personalData.kota}
+          </p>
+          <p>
+            <strong>Kode Pos:</strong> {personalData.kodepos}
+          </p>
+          <p>
+            <strong>Alamat:</strong> {personalData.alamat}
+          </p>
+          <p>
+            <strong>Kewarganegaraan:</strong> {personalData.kewarganegaraan}
+          </p>
+        </div>
+
+        {personalData.ringkasan && (
+          <p className="mt-4 text-gray-700 leading-relaxed">
+            <strong>Ringkasan:</strong> {personalData.ringkasan}
+          </p>
+        )}
       </section>
 
-     {/* Pengalaman */}
-      <section className="mb-6">
-        <h2 className="text-xl font-semibold mb-2">Pengalaman</h2>
+      {/* Pengalaman */}
+      <section className="mb-8">
+        <h2 className="text-xl font-semibold text-gray-800 mb-3 pl-3">
+          Pengalaman Kerja
+        </h2>
         {experienceData?.posisi ? (
-          <>
+          <div className="space-y-1 text-gray-700">
             <p>
               <strong>Posisi:</strong> {experienceData.posisi}
             </p>
@@ -119,22 +130,25 @@ export default function PreviewPage() {
               <strong>Mulai:</strong> {experienceData.mulai}
             </p>
             <p>
-              <strong>Selesai:</strong> {experienceData.selesai}
+              <strong>Selesai:</strong>{" "}
+              {experienceData.selesai || "Masih bekerja"}
             </p>
             <p>
               <strong>Deskripsi:</strong> {experienceData.deskripsi}
             </p>
-          </>
+          </div>
         ) : (
           <p className="text-gray-500">Belum ada pengalaman ditambahkan</p>
         )}
       </section>
 
-        {/* Pendidikan */}
-      <section className="mb-6">
-        <h2 className="text-xl font-semibold mb-2">Pendidikan</h2>
+      {/* Pendidikan */}
+      <section className="mb-8">
+        <h2 className="text-xl font-semibold text-gray-800 mb-3 pl-3">
+          Pendidikan
+        </h2>
         {educationData?.gelar ? (
-          <>
+          <div className="space-y-1 text-gray-700">
             <p>
               <strong>Gelar:</strong> {educationData.gelar}
             </p>
@@ -153,33 +167,36 @@ export default function PreviewPage() {
             <p>
               <strong>Deskripsi:</strong> {educationData.deskripsi}
             </p>
-          </>
+          </div>
         ) : (
           <p className="text-gray-500">Belum ada pendidikan ditambahkan</p>
         )}
       </section>
 
-      {/* Keahlian */}
-      <section>
-        <h2 className="text-xl font-semibold mb-2">Keahlian</h2>
-        {skillsData?.nama ?(
-          <>
-          <p>
-            <strong>Nama Keahlian:</strong> {skillsData.nama}
-          </p>
-          <p>
-            <strong>Tingkat Keahlian:</strong> {skillsData.tingkat}
-          </p>
-          </>
-        ):(
-            <p className="text-gray-500">
-            <strong>Belum ada keahlian ditambahkan</strong>
+      <section className="mb-8">
+        <h2 className="text-xl font-semibold text-gray-800 mb-3 pl-3">
+          Keahlian
+        </h2>
+        {skillsData?.nama ? (
+          <div className="space-y-1 text-gray-700">
+            <p>
+              <strong>Keahlian:</strong> {skillsData.nama}
             </p>
+            <p>
+              <strong>Tingkat:</strong> {skillsData.tingkat}
+            </p>
+          </div>
+        ) : (
+          <p className="text-gray-500">Belum ada keahlian ditambahkan</p>
         )}
       </section>
-      <button className="mt-5 bg-gray-900 text-white px-4 py-2 rounded">
-        <a href="/"><strong>Kembali ke Halaman Utama</strong></a>
-      </button>
+
+      <a
+        href="/"
+        className="block w-fit mx-auto bg-gray-900 text-white px-6 py-2 rounded-md font-semibold hover:bg-gray-700 transition"
+      >
+        Kembali ke Halaman Utama
+      </a>
     </div>
   );
 }
